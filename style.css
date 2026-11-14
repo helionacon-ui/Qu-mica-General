@@ -485,10 +485,10 @@ details.paso .inner p{margin:6px 0}
 .gs-out a:hover,.gs-out a:focus-visible{border-color:var(--line);background:var(--surface)}
 .gs-out small{color:var(--muted)}
 
-/* Química General: rojo como color principal (fondos sin cambiar) */
-:root{--accent:#b4232f;--accent-soft:#f8e4e4;--c0:#b4232f;--c0s:#f8e4e4;--warn:#b8730c;--warn-soft:#f7ecda}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#ff7b86;--accent-soft:#3a1a1e;--c0:#ff7b86;--c0s:#3a1a1e;--warn:#f0b252;--warn-soft:#3a2b12}}
-:root[data-theme="dark"]{--accent:#ff7b86;--accent-soft:#3a1a1e;--c0:#ff7b86;--c0s:#3a1a1e;--warn:#f0b252;--warn-soft:#3a2b12}
+/* Química General: verde como color principal (fondos sin cambiar) */
+:root{--accent:#1f7a4d;--accent-soft:#e1f2e8;--c0:#1f7a4d;--c0s:#e1f2e8;--warn:#b8730c;--warn-soft:#f7ecda}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#5fd39a;--accent-soft:#163826;--c0:#5fd39a;--c0s:#163826;--warn:#f0b252;--warn-soft:#3a2b12}}
+:root[data-theme="dark"]{--accent:#5fd39a;--accent-soft:#163826;--c0:#5fd39a;--c0s:#163826;--warn:#f0b252;--warn-soft:#3a2b12}
 /* Química General: ajustes */
 .qz button{font:600 13px system-ui;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;margin:4px 4px 0 0}.qz button:hover{border-color:var(--accent)}
 .exh{margin-top:34px;padding-top:14px;border-top:1px solid var(--line)}.ph{margin:0 0 10px}

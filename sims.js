@@ -127,7 +127,7 @@ SIMS.pv=el=>build(el,{selects:[{k:'t',l:'proceso (1 mol monoatómico desde 2 atm
     a.line(ox,oy,ox+w,oy,C.muted,1.5);a.line(ox,oy,ox,oy-h,C.muted,1.5);a.txt('V (L)',ox+w-30,oy+16,C.muted,11);a.txt('P (atm)',ox+4,oy-h+10,C.muted,11);
     for(let p=1;p<=6;p++){a.line(ox,Y(p),ox+w,Y(p),C.grid,1);a.txt(p,ox-16,Y(p)+4,C.muted,10);}for(let v=10;v<=40;v+=10){a.txt(v,X(v)-6,oy+14,C.muted,10);}
     // área = trabajo
-    if(pts.length>1&&s.t!=='cor'){a.g.fillStyle='rgba(180,35,47,0.18)';a.g.beginPath();a.g.moveTo(X(pts[0][0]),oy);pts.forEach(p=>a.g.lineTo(X(p[0]),Y(p[1])));a.g.lineTo(X(pts[pts.length-1][0]),oy);a.g.closePath();a.g.fill();}
+    if(pts.length>1&&s.t!=='cor'){a.g.fillStyle='rgba(31,122,77,0.18)';a.g.beginPath();a.g.moveTo(X(pts[0][0]),oy);pts.forEach(p=>a.g.lineTo(X(p[0]),Y(p[1])));a.g.lineTo(X(pts[pts.length-1][0]),oy);a.g.closePath();a.g.fill();}
     a.g.strokeStyle=C.a;a.g.lineWidth=3;a.g.beginPath();pts.forEach((p,i)=>i?a.g.lineTo(X(p[0]),Y(p[1])):a.g.moveTo(X(p[0]),Y(p[1])));a.g.stroke();
     a.circ(X(V1),Y(P1),6,C.b,true);a.txt('1',X(V1)+8,Y(P1)-6,C.b,13);a.circ(X(V2),Y(P2),6,C.c,true);a.txt('2',X(V2)+8,Y(P2)-6,C.c,13);
     a.html(`Estado 2: P = ${F(P2)} atm, V = ${F(V2)} L, T = ${F(T2)} K · <b>W = ${F(W)} J</b> (área, signo de los apuntes: + compresión) · q = ${F(Q)} J · ΔU = ${F(dU)} J · ΔH = ${F(dH)} J · ΔS = ${F(dS)} J/K<br><span class="hint">ΔU = q + W siempre; ΔU = nC<sub>v</sub>ΔT y ΔH = nC<sub>p</sub>ΔT en cualquier proceso de un gas ideal. Compara el trabajo isotermo reversible con el irreversible: el reversible es el máximo.</span>`);}});
