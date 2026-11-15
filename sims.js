@@ -226,6 +226,15 @@ SIMS.ajustePaso=el=>build(el,{w:640,h:360,
  }});
 
 
+
+/* ---- paso2 estequioPaso ---- */
+SIMS.estequioPaso=el=>SIMS.__paso(el,{"w":620,"h":265,"q":"Se queman 10 g de propano. ¿Cuántos gramos de CO₂ se forman y cuánto oxígeno se necesita? Sube el paso.","base":[["t","C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O",30,26,15,"left"]],"steps":[{"text":"Se queman <b>10 g de propano</b> (C₃H₈) con oxígeno suficiente. ¿Cuántos gramos de CO₂ se producen y cuánto O₂ se consume?","add":[]},{"text":"Primero la reacción <b>ajustada</b>: C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O (3 C, 8 H y 10 O a cada lado).","add":[["t","3 C · 8 H · 10 O  a cada lado  ✓",30,64,14,"left"]]},{"text":"Masa molar del propano: M = 3·12,011 + 8·1,008 = <b>44,1 g/mol</b>.","add":[["t","M(C₃H₈) = 44,1 g/mol",30,98,15,"left"]]},{"text":"Moles de propano: <b>n = 10/44,1 = 0,2268 mol</b>.","add":[["t","n(C₃H₈) = 0,2268 mol",30,132,15,"left"]]},{"text":"Relación estequiométrica (coeficientes): 1 mol de propano ↔ 3 mol de CO₂ ↔ 5 mol de O₂. Entonces <b>n(CO₂) = 3·0,2268 = 0,68 mol</b> y <b>n(O₂) = 5·0,2268 = 1,134 mol</b>.","add":[["t","n(CO₂) = 0,68 mol ; n(O₂) = 1,134 mol",30,166,14,"left"]]},{"text":"A gramos: <b>m(CO₂) = 0,68·44,01 = 29,9 g</b> y <b>m(O₂) = 1,134·32 = 36,3 g</b>.","add":[["t","m(CO₂) = 29,9 g ; m(O₂) = 36,3 g",30,200,15,"left"]]},{"text":"Comprobación con la <b>ley de conservación de la masa</b>: reactivos 10 + 36,3 = 46,3 g; productos CO₂ 29,9 g + H₂O 16,3 g = 46,3 g ✓.","add":[["t","masa reactivos = masa productos",30,234,14,"left"]]}]});
+/* ---- fin paso2 estequioPaso ---- */
+
+
+
+
+
 /* ---- paso a paso declarativo ---- */
 SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
  sliders:[{k:'paso',v:0,min:0,max:D.steps.length,step:1,l:'paso de la resolución (0 = enunciado)',u:''}],
@@ -242,8 +251,8 @@ SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
   a.html('<div>'+(p===0?D.q:D.steps[p-1].text)+'</div>');}});
 /* ---- fin paso a paso declarativo ---- */
 
-/* ---- paso2 estequioPaso ---- */
-SIMS.estequioPaso=el=>SIMS.__paso(el,{"w":620,"h":265,"q":"Se queman 10 g de propano. ¿Cuántos gramos de CO₂ se forman y cuánto oxígeno se necesita? Sube el paso.","base":[["t","C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O",30,26,15,"left"]],"steps":[{"text":"Se queman <b>10 g de propano</b> (C₃H₈) con oxígeno suficiente. ¿Cuántos gramos de CO₂ se producen y cuánto O₂ se consume?","add":[]},{"text":"Primero la reacción <b>ajustada</b>: C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O (3 C, 8 H y 10 O a cada lado).","add":[["t","3 C · 8 H · 10 O  a cada lado  ✓",30,64,14,"left"]]},{"text":"Masa molar del propano: M = 3·12,011 + 8·1,008 = <b>44,1 g/mol</b>.","add":[["t","M(C₃H₈) = 44,1 g/mol",30,98,15,"left"]]},{"text":"Moles de propano: <b>n = 10/44,1 = 0,2268 mol</b>.","add":[["t","n(C₃H₈) = 0,2268 mol",30,132,15,"left"]]},{"text":"Relación estequiométrica (coeficientes): 1 mol de propano ↔ 3 mol de CO₂ ↔ 5 mol de O₂. Entonces <b>n(CO₂) = 3·0,2268 = 0,68 mol</b> y <b>n(O₂) = 5·0,2268 = 1,134 mol</b>.","add":[["t","n(CO₂) = 0,68 mol ; n(O₂) = 1,134 mol",30,166,14,"left"]]},{"text":"A gramos: <b>m(CO₂) = 0,68·44,01 = 29,9 g</b> y <b>m(O₂) = 1,134·32 = 36,3 g</b>.","add":[["t","m(CO₂) = 29,9 g ; m(O₂) = 36,3 g",30,200,15,"left"]]},{"text":"Comprobación con la <b>ley de conservación de la masa</b>: reactivos 10 + 36,3 = 46,3 g; productos CO₂ 29,9 g + H₂O 16,3 g = 46,3 g ✓.","add":[["t","masa reactivos = masa productos",30,234,14,"left"]]}]});
-/* ---- fin paso2 estequioPaso ---- */
+/* ---- paso3 icePaso ---- */
+SIMS.icePaso=el=>SIMS.__paso(el,{"w":660,"h":290,"q":"Calcula las concentraciones en el equilibrio de H2 + I2 ⇌ 2 HI con Kc = 50. Sube el paso.","base":[["t","H₂(g) + I₂(g) ⇌ 2 HI(g) ,  Kc = 50 ,  1 mol de H₂ y 1 mol de I₂ en 1 L",30,26,14,"left"]],"steps":[{"text":"Se introducen 1 mol de H₂ y 1 mol de I₂ en un recipiente de 1 L a una temperatura en la que K<sub>c</sub> = 50. ¿Cuáles son las concentraciones en el equilibrio?","add":[["t","[H2]₀ = [I2]₀ = 1 M ,  [HI]₀ = 0",30,62,15,"left"]]},{"text":"<b>Paso 1 (tabla ICE):</b> reaccionan x mol/L de cada reactivo y se forman 2x de HI. Equilibrio: [H₂] = [I₂] = 1 − x ; [HI] = 2x.","add":[["t","equilibrio:  1 − x ,  1 − x ,  2x",30,96,15,"left"]]},{"text":"<b>Paso 2:</b> escribe K<sub>c</sub> = [HI]² / ([H₂][I₂]) = (2x)² / (1 − x)² = 50. Los coeficientes estequiométricos son los exponentes.","add":[["t","(2x)² / (1 − x)² = 50",30,130,15,"left"]]},{"text":"<b>Paso 3:</b> es un cuadrado perfecto: raíz en ambos lados ⇒ 2x/(1 − x) = √50 = 7,071 (se descarta la raíz negativa).","add":[["t","2x / (1 − x) = 7,071",30,164,15,"left"]]},{"text":"<b>Paso 4:</b> despeja: 2x = 7,071 − 7,071x ⇒ x = 7,071/9,071 = <b>0,780</b> mol/L.","add":[["t","x = 7,071 / 9,071 = 0,780",30,198,15,"left"]]},{"text":"<b>Paso 5:</b> [HI] = 2x = <b>1,559 M</b> y [H₂] = [I₂] = 1 − 0,780 = <b>0,220 M</b>.","add":[["t","[HI] = 1,559 M ,  [H2] = [I2] = 0,220 M",30,232,15,"left"]]},{"text":"<b>Comprobación:</b> 1,559² / 0,220² = 2,430 / 0,0486 ≈ 50 ✓. Además x &lt; 1, así que ninguna concentración sale negativa.","add":[["t","1,559² / 0,220² ≈ 50 ✓",30,266,15,"left"]]}]});
+/* ---- fin paso3 icePaso ---- */
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
