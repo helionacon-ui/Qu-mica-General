@@ -186,5 +186,44 @@ SIMS.nernst=el=>build(el,{sliders:[{k:'zn',l:'[Zn²⁺]',v:0.1,min:0.001,max:1,s
     const dG=-2*F0*E/1000;
     a.html(`E° = 0,34 − (−0,76) = 1,10 V · Nernst: E = E° − (RT/2F)·ln([Zn²⁺]/[Cu²⁺]) = <b>${E.toFixed(3)} V</b> · ΔG = −nFE = ${F(dG)} kJ/mol<br><span class="hint">Diluir el Cu²⁺ (reactivo del cátodo) baja el potencial; diluir el Zn²⁺ lo sube. A 25 °C el factor es 0,059/n por década de logaritmo decimal. En la práctica se mide con 0,1 M y 0,002 M de CuSO₄.</span>`);}});
 
+/* ---- Ajuste de una ecuación química paso a paso: C₃H₈ + O₂ → CO₂ + H₂O ---- */
+SIMS.ajustePaso=el=>build(el,{w:640,h:360,
+ sliders:[{k:'paso',v:0,min:0,max:4,step:1,l:'paso del ajuste (0 = sin ajustar)',u:''}],
+ draw(a){a.clear();const p=a.st.paso;
+  const CO=[[1,1,1,1],[1,1,3,1],[1,1,3,4],[1,5,3,4],[1,5,3,4]][p];
+  const [k1,k2,k3,k4]=CO;
+  const K={c:'#b8730c',ok:'#2c8a52',bad:'#c43d63'};
+  const changed={1:2,2:3,3:1}[p];   // índice del coeficiente que cambia
+  const piece=(txt,x,idx)=>{const col=(idx===changed)?K.c:C.text;a.txt(txt,x,110,col,22,'left');};
+  // ecuación
+  let x=40;
+  const seg=(s,idx)=>{a.g.font='22px system-ui';const w=a.g.measureText(s).width;piece(s,x,idx);x+=w+8;};
+  seg(String(k1),0);seg('C₃H₈ +',-1);seg(String(k2),1);seg('O₂ →',-1);seg(String(k3),2);seg('CO₂ +',-1);seg(String(k4),3);seg('H₂O',-1);
+  // conteo de átomos
+  const left={C:3*k1,H:8*k1,O:2*k2}, right={C:1*k3,H:2*k4,O:2*k3+1*k4};
+  const rows=[['C',left.C,right.C],['H',left.H,right.H],['O',left.O,right.O]];
+  const x0=150,y0=170,cw=140,rh=40;
+  a.txt('Átomo',x0,y0-14,C.muted,14,'center');
+  a.txt('Reactivos',x0+cw,y0-14,C.muted,14,'center');
+  a.txt('Productos',x0+2*cw,y0-14,C.muted,14,'center');
+  rows.forEach(([el_,l,r],i)=>{
+    const y=y0+i*rh+rh/2+6;
+    a.txt(el_,x0,y,C.text,18,'center');
+    const ok=l===r;
+    a.txt(String(l),x0+cw,y,ok?K.ok:K.bad,18,'center');
+    a.txt(String(r),x0+2*cw,y,ok?K.ok:K.bad,18,'center');
+    a.txt(ok?'✓':'≠',x0+3*cw-20,y,ok?K.ok:K.bad,18,'center');
+  });
+  a.line(x0-50,y0+3*rh+4,x0+3*cw-40,y0+3*rh+4,C.grid,1.5);
+  const T=[
+   'Ecuación sin ajustar: C₃H₈ + O₂ → CO₂ + H₂O. Contamos átomos a cada lado; solo se cambian los coeficientes, nunca los subíndices.',
+   'Empezamos por el carbono: hay 3 C a la izquierda, así que ponemos 3 delante del CO₂. Ahora C = 3 a ambos lados.',
+   'Hidrógeno: hay 8 H a la izquierda; ponemos 4 delante del H₂O, porque 4 · 2 = 8.',
+   'Oxígeno: a la derecha hay 3·2 + 4 = 10 O; a la izquierda 2·b = 10, así que b = 5 O₂.',
+   'Comprobación: C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O. Carbono 3 = 3, hidrógeno 8 = 8 y oxígeno 10 = 10 ✓.'
+  ];
+  a.html(`<div>${T[p]}</div>`);
+ }});
+
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
