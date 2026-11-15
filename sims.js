@@ -225,5 +225,25 @@ SIMS.ajustePaso=el=>build(el,{w:640,h:360,
   a.html(`<div>${T[p]}</div>`);
  }});
 
+
+/* ---- paso a paso declarativo ---- */
+SIMS.__paso=(el,D)=>build(el,{w:D.w||660,h:D.h||340,
+ sliders:[{k:'paso',v:0,min:0,max:D.steps.length,step:1,l:'paso de la resolución (0 = enunciado)',u:''}],
+ draw(a){a.clear();const g=a.g,p=a.st.paso;
+  const it=(x,col)=>{const k=x[0];
+   if(k==='t')a.txt(x[1],x[2],x[3],col,x[4]||13,x[5]||'left');
+   else if(k==='l')a.line(x[1],x[2],x[3],x[4],col,x[5]||1.5,x[6]);
+   else if(k==='a')a.arrow(x[1],x[2],x[3],x[4],col,x[5]);
+   else if(k==='c')a.circ(x[1],x[2],x[3],col,!!x[4]);
+   else if(k==='r'){g.strokeStyle=col;g.lineWidth=1.8;if(x[5]){g.fillStyle=col;g.globalAlpha=.18;g.fillRect(x[1],x[2],x[3],x[4]);g.globalAlpha=1;}g.strokeRect(x[1],x[2],x[3],x[4]);}
+   else if(k==='p'){g.strokeStyle=col;g.lineWidth=x[2]||2;g.beginPath();x[1].forEach((q,i)=>i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]));g.stroke();}};
+  (D.base||[]).forEach(x=>it(x,C.muted));
+  D.steps.forEach((s,i)=>{if(i+1>p)return;const cur=(i+1===p);(s.add||[]).forEach(x=>it(x,cur?C.d:C.text));if(cur)(s.now||[]).forEach(x=>it(x,C.d));});
+  a.html('<div>'+(p===0?D.q:D.steps[p-1].text)+'</div>');}});
+/* ---- fin paso a paso declarativo ---- */
+
+/* ---- paso2 estequioPaso ---- */
+SIMS.estequioPaso=el=>SIMS.__paso(el,{"w":620,"h":265,"q":"Se queman 10 g de propano. ¿Cuántos gramos de CO₂ se forman y cuánto oxígeno se necesita? Sube el paso.","base":[["t","C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O",30,26,15,"left"]],"steps":[{"text":"Se queman <b>10 g de propano</b> (C₃H₈) con oxígeno suficiente. ¿Cuántos gramos de CO₂ se producen y cuánto O₂ se consume?","add":[]},{"text":"Primero la reacción <b>ajustada</b>: C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O (3 C, 8 H y 10 O a cada lado).","add":[["t","3 C · 8 H · 10 O  a cada lado  ✓",30,64,14,"left"]]},{"text":"Masa molar del propano: M = 3·12,011 + 8·1,008 = <b>44,1 g/mol</b>.","add":[["t","M(C₃H₈) = 44,1 g/mol",30,98,15,"left"]]},{"text":"Moles de propano: <b>n = 10/44,1 = 0,2268 mol</b>.","add":[["t","n(C₃H₈) = 0,2268 mol",30,132,15,"left"]]},{"text":"Relación estequiométrica (coeficientes): 1 mol de propano ↔ 3 mol de CO₂ ↔ 5 mol de O₂. Entonces <b>n(CO₂) = 3·0,2268 = 0,68 mol</b> y <b>n(O₂) = 5·0,2268 = 1,134 mol</b>.","add":[["t","n(CO₂) = 0,68 mol ; n(O₂) = 1,134 mol",30,166,14,"left"]]},{"text":"A gramos: <b>m(CO₂) = 0,68·44,01 = 29,9 g</b> y <b>m(O₂) = 1,134·32 = 36,3 g</b>.","add":[["t","m(CO₂) = 29,9 g ; m(O₂) = 36,3 g",30,200,15,"left"]]},{"text":"Comprobación con la <b>ley de conservación de la masa</b>: reactivos 10 + 36,3 = 46,3 g; productos CO₂ 29,9 g + H₂O 16,3 g = 46,3 g ✓.","add":[["t","masa reactivos = masa productos",30,234,14,"left"]]}]});
+/* ---- fin paso2 estequioPaso ---- */
 document.querySelectorAll('[data-sim]').forEach(el=>{const f=SIMS[el.dataset.sim];if(f)f(el);});
 })();
