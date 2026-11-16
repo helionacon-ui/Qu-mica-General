@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,31 +86,31 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c8);--tcs:var(--c8s)">
 <div class="sh"><span aria-hidden="true" class="badge">15</span><div class="shx"><p class="kick">Temario oficial desarrollado · Tema 15</p><h2 id="t15">Reactividad de las funciones orgánicas</h2><div class="tags"><span class="tag">Temario oficial desarrollado</span><span class="tag">Temario oficial · tema 12</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> reconocer los grupos funcionales, nombrar los compuestos principales y conocer la reactividad característica de cada familia. Es el tema 12 del temario oficial, que completa la formulación del tema 5.</p>
-<p>La química del carbono se organiza por <b>grupos funcionales</b>: el esqueleto de carbonos aporta poco y es el grupo el que decide cómo reacciona la molécula.</p>
-<p><b>Tres tipos de reacción</b> cubren casi todo: <b>sustitución</b> (un grupo sale, otro entra), <b>adición</b> (se rompe un enlace múltiple y entran dos grupos) y <b>eliminación</b> (lo contrario: salen dos grupos y se forma un doble enlace).</p>
-<p><b>Alcanos:</b> poco reactivos; solo combustión y halogenación por radicales. <b>Alquenos y alquinos:</b> adición electrófila, con la regla de Markovnikov. <b>Aromáticos:</b> sustitución electrófila, porque la adición rompería la aromaticidad.</p>
-<p><b>Alcoholes:</b> se oxidan a aldehído y luego a ácido (si son primarios) o a cetona (secundarios). Los terciarios no se oxidan. <b>Ácido + alcohol → éster + agua</b> es la esterificación, reversible y catalizada por ácido.</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> reconocer los grupos funcionales, nombrar los compuestos principales y conocer la reactividad característica de cada familia. Es el tema 12 del temario oficial, que completa la formulación del tema 5.</p>
+<p class="lede">La química del carbono se organiza por <b>grupos funcionales</b>: el esqueleto de carbonos aporta poco y es el grupo el que decide cómo reacciona la molécula.</p>
+<p class="run"><b>Tres tipos de reacción:</b> cubren casi todo: <b>sustitución</b> (un grupo sale, otro entra), <b>adición</b> (se rompe un enlace múltiple y entran dos grupos) y <b>eliminación</b> (lo contrario: salen dos grupos y se forma un doble enlace).</p>
+<p class="run"><b>Alcanos:</b> poco reactivos; solo combustión y halogenación por radicales. <b>Alquenos y alquinos:</b> adición electrófila, con la regla de Markovnikov. <b>Aromáticos:</b> sustitución electrófila, porque la adición rompería la aromaticidad.</p>
+<p class="run"><b>Alcoholes:</b> se oxidan a aldehído y luego a ácido (si son primarios) o a cetona (secundarios). Los terciarios no se oxidan. <b>Ácido + alcohol → éster + agua</b> es la esterificación, reversible y catalizada por ácido.</p>
 </div>
 <details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 15 <span class="src">6 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">R–</td><td>Radical alquilo genérico</td><td class="u">CH₃–, C₂H₅–…</td></tr><tr><td class="sym">–OH</td><td>Grupo hidroxilo (alcohol)</td><td class="u">sufijo -ol</td></tr><tr><td class="sym">–CHO</td><td>Aldehído</td><td class="u">sufijo -al</td></tr><tr><td class="sym">&gt;C=O</td><td>Cetona</td><td class="u">sufijo -ona</td></tr><tr><td class="sym">–COOH</td><td>Ácido carboxílico</td><td class="u">sufijo -oico</td></tr><tr><td class="sym">–COO–</td><td>Éster</td><td class="u">sufijo -oato de -ilo</td></tr></table></div></div></details>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El orden de preferencia de los grupos</p><p>Cuando hay varios grupos funcionales, solo uno da el sufijo al nombre y los demás pasan a prefijos. El orden de prioridad, de mayor a menor, es:</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El orden de preferencia de los grupos</p><p class="lede">Cuando hay varios grupos funcionales, solo uno da el sufijo al nombre y los demás pasan a prefijos. El orden de prioridad, de mayor a menor, es:</p>
 <ul><li>Ácido carboxílico &gt; éster &gt; amida &gt; nitrilo &gt; aldehído &gt; cetona &gt; alcohol &gt; amina.</li><li>Después, por este orden: dobles enlaces, triples enlaces y, por último, los sustituyentes (halógenos, nitro, radicales), que siempre van de prefijo.</li></ul>
 <p>La cadena principal es la <b>más larga que contenga el grupo principal</b>, y se numera para que ese grupo reciba el localizador más bajo posible.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> Primero el grupo funcional, después la longitud de la cadena y solo al final los sustituyentes. Elegir la cadena más larga sin comprobar que incluye el grupo principal es el error típico de los ejercicios de nomenclatura.</div>
 </div><!--/amp1--><!--deep--><h3 id="t15-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Hidrocarburos</h4>
+<h4><span class="hn">1</span>Hidrocarburos</h4>
 <ul><li><b>Alcanos</b> (\(C_nH_{2n+2}\)): enlaces simples, apolares, poco reactivos. Reaccionan por <b>combustión</b> y por <b>halogenación radicalaria</b> con luz ultravioleta, que da mezclas poco selectivas.</li><li><b>Alquenos</b> (\(C_nH_{2n}\)): el doble enlace es rico en electrones y sufre <b>adición electrófila</b> de HX, X₂, H₂O y H₂.</li><li><b>Alquinos</b> (\(C_nH_{2n-2}\)): como los alquenos, con dos adiciones sucesivas posibles.</li><li><b>Aromáticos:</b> el benceno tiene seis electrones π deslocalizados. Prefiere la <b>sustitución</b> a la adición, porque así conserva la estabilidad aromática.</li></ul>
 <div class="box key deepnote"><b>Idea clave.</b> <b>Regla de Markovnikov:</b> en la adición de HX a un alqueno asimétrico, el hidrógeno se une al carbono que <b>ya tiene más hidrógenos</b>. La razón de fondo es que así se forma el carbocatión más estable, y la estabilidad crece de primario a terciario.</div>
-<h4>2. Compuestos oxigenados</h4>
+<h4><span class="hn">2</span>Compuestos oxigenados</h4>
 <div class="tw"><table><tr><th>Familia</th><th>Grupo</th><th>Reacción característica</th></tr><tr><td>Alcohol</td><td>–OH</td><td>Oxidación, deshidratación, esterificación</td></tr><tr><td>Éter</td><td>R–O–R′</td><td>Muy poco reactivo; buen disolvente</td></tr><tr><td>Aldehído</td><td>–CHO</td><td>Se oxida con facilidad a ácido</td></tr><tr><td>Cetona</td><td>&gt;C=O</td><td>Adición nucleófila; no se oxida fácil</td></tr><tr><td>Ácido</td><td>–COOH</td><td>Acidez, esterificación, salificación</td></tr><tr><td>Éster</td><td>–COO–</td><td>Hidrólisis, saponificación</td></tr></table></div><p>La <b>oxidación de alcoholes</b> es la secuencia que más se pregunta:</p>
 <div class="eqd">\[\text{1}^\mathrm{rio}:\ \mathrm{R\text{-}CH_2OH}\to\mathrm{R\text{-}CHO}\to\mathrm{R\text{-}COOH}\qquad \text{2}^\mathrm{rio}:\ \mathrm{R_2CHOH}\to\mathrm{R_2C{=}O}\]</div>
 <p>El <b>terciario no se oxida</b> porque no le queda ningún hidrógeno en el carbono del grupo hidroxilo. Es la forma de distinguirlos en el laboratorio.</p>
-<h4>3. Nitrogenados y polímeros</h4>
+<h4><span class="hn">3</span>Nitrogenados y polímeros</h4>
 <ul><li><b>Aminas:</b> básicas, por el par libre del nitrógeno. Primaria, secundaria o terciaria según cuántos radicales lleve.</li><li><b>Amidas:</b> el enlace amida es el <b>enlace peptídico</b> de las proteínas; es plano y muy estable.</li><li><b>Nitrilos:</b> grupo –C≡N; se hidrolizan a ácido carboxílico.</li></ul>
 <p><b>Polímeros:</b> por <b>adición</b> (polietileno, PVC, poliestireno: el monómero tiene doble enlace y no se pierde nada) o por <b>condensación</b> (nailon, poliéster, baquelita: se libera una molécula pequeña, normalmente agua, en cada unión).</p>
 <div class="box key deepnote"><b>Idea clave.</b> la diferencia se reconoce al vuelo mirando la fórmula del monómero: si tiene un doble enlace, es de adición; si tiene dos grupos funcionales en los extremos, de condensación.</div>
-<h4>4. Isomería</h4>
+<h4><span class="hn">4</span>Isomería</h4>
 <ul><li><b>De cadena:</b> distinto esqueleto (butano y metilpropano).</li><li><b>De posición:</b> el mismo grupo en distinto carbono (1-propanol y 2-propanol).</li><li><b>De función:</b> distinto grupo funcional con la misma fórmula (etanol y dimetiléter).</li><li><b>Geométrica (cis-trans):</b> por la rigidez del doble enlace.</li><li><b>Óptica:</b> carbono asimétrico, con cuatro sustituyentes distintos. Las dos formas son imágenes especulares no superponibles y desvían la luz polarizada en sentidos opuestos.</li></ul>
 <p>La isomería óptica no es un detalle: dos enantiómeros de un fármaco pueden tener efectos completamente distintos en el organismo.</p>
 </div><!--/deep--><h3 id="t15-ejercicios">Ejercicios tipo, paso a paso</h3><details class="paso"><summary><span class="pn">1</span>Nombra CH₃–CH(OH)–CH₂–COOH.</summary><div class="inner"><p>El grupo principal es el ácido (prioridad máxima), así que la cadena se numera desde el carbono del –COOH. Cuatro carbonos: but-. El hidroxilo está en el 3. <b>Ácido 3-hidroxibutanoico</b>.</p></div></details><details class="paso"><summary><span class="pn">2</span>Producto de la adición de HBr al propeno.</summary><div class="inner"><p>CH₂=CH–CH₃ + HBr. Por Markovnikov, el H va al carbono 1 (el que ya tiene dos H) y el Br al carbono 2: <b>2-bromopropano</b>. El carbocatión intermedio es secundario, más estable que el primario.</p></div></details><details class="paso"><summary><span class="pn">3</span>Oxidación de 2-propanol y de 1-propanol.</summary><div class="inner"><p>2-propanol es secundario → <b>propanona</b> (acetona), y ahí se para. 1-propanol es primario → <b>propanal</b> y, si se sigue oxidando, <b>ácido propanoico</b>.</p></div></details><details class="paso"><summary><span class="pn">4</span>Esterificación de ácido acético con etanol.</summary><div class="inner"><p>\(\mathrm{CH_3COOH}+\mathrm{CH_3CH_2OH}\rightleftharpoons\mathrm{CH_3COOCH_2CH_3}+\mathrm{H_2O}\): <b>etanoato de etilo</b>. Es reversible y se cataliza con ácido sulfúrico; para desplazarla se elimina el agua.</p></div></details>

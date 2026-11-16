@@ -17,24 +17,64 @@
 <style id="lectura">
 @media screen{
 :root{--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif}
-body{font-family:var(--body);font-size:20.5px;line-height:2.1;letter-spacing:.022em;word-spacing:.09em}
-p{margin:0 0 1.75em}
-li{margin:.8em 0}
-p,li{max-width:62ch}
+body{font-family:var(--body);font-size:20px;line-height:1.95;letter-spacing:.014em;word-spacing:.05em}
+p{margin:0 0 1.5em;max-width:64ch;hyphens:auto;-webkit-hyphens:auto}
+li{margin:.72em 0;max-width:64ch}
 .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
-h2{margin-top:92px;margin-bottom:24px;line-height:1.3}
-h3{font-size:24px;margin:58px 0 18px;line-height:1.35}
-h4{margin-top:34px;margin-bottom:10px}
-.box{padding:24px 30px;margin:32px 0}
-table{font-size:18px;line-height:1.75}
-td,th{padding-top:.85em;padding-bottom:.85em}
-figure.fig figcaption{font-size:17px;line-height:1.8;margin-top:12px}
+h2{margin-top:92px;margin-bottom:22px;line-height:1.25}
+h3{font-size:25px;margin:66px 0 20px;line-height:1.3}
+h4{margin:38px 0 12px;line-height:1.4}
+/* ---- entradilla con capitular ---- */
+.zero .lede{font-size:1.05em;line-height:1.86;text-align:left}
+.zero .lede::first-letter{float:left;font-size:3.05em;line-height:.84;font-weight:700;padding:.06em .14em 0 0;color:var(--tc,var(--accent))}
+/* ---- sumario del tema ---- */
+p.obj{max-width:none;text-align:left;margin:0 0 1.7em;padding:14px 20px;border-radius:10px;
+ background:color-mix(in srgb,var(--surface) 62%,transparent);
+ border-left:3px solid var(--tc,var(--accent));font-size:.95em;line-height:1.75}
+p.obj>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);letter-spacing:.1em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- términos con entrada, al modo de un manual ---- */
+p.run{margin:0 0 1.38em}
+p.run>b:first-child{display:block;font:700 12px/1.7 var(--mono,monospace);letter-spacing:.09em;
+ text-transform:uppercase;color:var(--tc,var(--accent))}
+/* ---- rótulos internos ---- */
+.zero>.ft{font:700 11.5px/1.6 var(--mono,monospace);letter-spacing:.1em;text-transform:uppercase}
+.zero>.ft:not(:first-child){margin-top:2em;font-size:12.5px;color:var(--fg);opacity:.72}
+/* ---- desarrollo teórico ---- */
+.deep h4{position:relative;padding-left:2.35em;font-size:1.03em}
+.deep h4 .hn{position:absolute;left:0;top:.06em;font:700 .84em/1.7 var(--mono,monospace);
+ color:var(--tc,var(--accent));opacity:.8}
+.deep>h4:not(:first-child){border-top:1px solid var(--line);padding-top:30px;margin-top:42px}
+.eqd{margin:1.65em 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+/* ---- notas al margen, sin duplicar el rótulo ---- */
+.box.deepnote{padding:15px 20px;margin:1.5em 0;border-radius:0 10px 10px 0;
+ background:color-mix(in srgb,var(--surface) 76%,transparent)}
+.box.key.deepnote::before,.box.trap.deepnote::before{content:none}
+.box.deepnote>b:first-child{display:block;font:700 11.5px/1.7 var(--mono,monospace);
+ letter-spacing:.1em;text-transform:uppercase;color:var(--tc,var(--accent))}
+.box.trap.deepnote>b:first-child{color:var(--warn)}
+/* ---- resto ---- */
+.box{padding:22px 28px;margin:30px 0}
+table{font-size:18px;line-height:1.7}
+td,th{padding-top:.8em;padding-bottom:.8em}
+figure.fig figcaption{font-size:17px;line-height:1.78;margin-top:12px}
 figure.fig{margin-block:34px}
-.lede{line-height:1.85}
 .toc a{font-size:15.5px;padding:8px 0 8px 10px}
 svg,svg text,canvas,.katex,mjx-container{letter-spacing:normal;word-spacing:normal}
+mjx-container[display]{margin:0!important}
 details>summary{line-height:1.7;padding-block:.5em}
-@media (max-width:600px){body{font-size:19px;line-height:2}}
+.enun p,.inner p{text-align:left}
+@media (min-width:1040px){
+p,li{text-align:justify}
+.zero .lede,.enun p,.inner p,figcaption,.ft{text-align:left}
+}
+@media (max-width:600px){
+body{font-size:18.5px;line-height:1.9}
+p{text-align:left}
+.zero .lede::first-letter{font-size:2.6em}
+.deep h4{padding-left:0}
+.deep h4 .hn{position:static;margin-right:.5em}
+}
 }
 </style>
 </head>
@@ -46,32 +86,32 @@ details>summary{line-height:1.7;padding-block:.5em}
 <main>
 <section class="sec tema" style="--tc:var(--c6);--tcs:var(--c6s)">
 <div class="sh"><span aria-hidden="true" class="badge">13</span><div class="shx"><p class="kick">Temario oficial desarrollado · Tema 13</p><h2 id="t13">Reacciones ácido-base</h2><div class="tags"><span class="tag">Temario oficial desarrollado</span><span class="tag">Temario oficial · tema 9</span></div></div></div>
-<div class="zero"><p class="ft">Desde cero</p><p><b>Objetivo:</b> manejar las tres definiciones de ácido y base, calcular el pH de ácidos y bases fuertes y débiles, entender la hidrólisis de sales, las disoluciones reguladoras y las valoraciones. Es el tema 9 del temario oficial.</p>
-<p><b>Arrhenius:</b> ácido da H⁺, base da OH⁻ (solo en agua). <b>Brønsted-Lowry:</b> ácido cede protones, base los acepta; aparecen los <b>pares conjugados</b>. <b>Lewis:</b> ácido acepta un par de electrones, base lo cede; es la más general.</p>
-<p><b>Autoionización del agua:</b> \(K_w=[H^+][OH^-]=10^{-14}\) a 25 °C, de donde \(pH+pOH=14\).</p>
-<p><b>Ácido fuerte:</b> se disocia del todo, \(pH=-\log C_a\). <b>Ácido débil:</b> \(K_a=\dfrac{[H^+]^2}{C_a-[H^+]}\approx\dfrac{[H^+]^2}{C_a}\), luego \([H^+]=\sqrt{K_aC_a}\).</p>
-<p><b>Relación conjugados:</b> \(K_a\cdot K_b=K_w\). Cuanto más fuerte es el ácido, más débil es su base conjugada.</p>
-<p><b>Tampón:</b> ácido débil con su sal. \(pH=pK_a+\log\dfrac{[\text{sal}]}{[\text{ácido}]}\) (Henderson-Hasselbalch). Capacidad máxima cuando \(pH=pK_a\).</p>
+<div class="zero"><p class="ft">Desde cero</p><p class="obj"><b>Objetivo:</b> manejar las tres definiciones de ácido y base, calcular el pH de ácidos y bases fuertes y débiles, entender la hidrólisis de sales, las disoluciones reguladoras y las valoraciones. Es el tema 9 del temario oficial.</p>
+<p class="run"><b>Arrhenius:</b> ácido da H⁺, base da OH⁻ (solo en agua). <b>Brønsted-Lowry:</b> ácido cede protones, base los acepta; aparecen los <b>pares conjugados</b>. <b>Lewis:</b> ácido acepta un par de electrones, base lo cede; es la más general.</p>
+<p class="run"><b>Autoionización del agua:</b> \(K_w=[H^+][OH^-]=10^{-14}\) a 25 °C, de donde \(pH+pOH=14\).</p>
+<p class="run"><b>Ácido fuerte:</b> se disocia del todo, \(pH=-\log C_a\). <b>Ácido débil:</b> \(K_a=\dfrac{[H^+]^2}{C_a-[H^+]}\approx\dfrac{[H^+]^2}{C_a}\), luego \([H^+]=\sqrt{K_aC_a}\).</p>
+<p class="run"><b>Relación conjugados:</b> \(K_a\cdot K_b=K_w\). Cuanto más fuerte es el ácido, más débil es su base conjugada.</p>
+<p class="run"><b>Tampón:</b> ácido débil con su sal. \(pH=pK_a+\log\dfrac{[\text{sal}]}{[\text{ácido}]}\) (Henderson-Hasselbalch). Capacidad máxima cuando \(pH=pK_a\).</p>
 </div>
 <details class="nom"><summary><span aria-hidden="true" class="nom-ic">Aa</span>Nomenclatura del tema 13 <span class="src">6 símbolos</span></summary><div class="inner">
 <div class="tw"><table><tr><th>Símbolo</th><th>Qué significa</th><th>Unidades · ejemplo</th></tr><tr><td class="sym">K_w</td><td>Producto iónico del agua</td><td class="u">10⁻¹⁴ a 25 °C</td></tr><tr><td class="sym">K_a, K_b</td><td>Constantes de acidez y basicidad</td><td class="u">K_a·K_b = K_w</td></tr><tr><td class="sym">pH, pOH</td><td>−log[H⁺], −log[OH⁻]</td><td class="u">pH + pOH = 14</td></tr><tr><td class="sym">α</td><td>Grado de disociación</td><td class="u">%; α = √(K_a/C) si es pequeño</td></tr><tr><td class="sym">pK_a</td><td>−log K_a</td><td class="u">tampón óptimo en pH = pK_a</td></tr><tr><td class="sym">P. equivalencia</td><td>Moles ácido = moles base</td><td class="u">no siempre pH 7</td></tr></table></div></div></details>
-<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El error del punto de equivalencia</p><p>Mucha gente da por hecho que en el punto de equivalencia el pH es 7. Solo es cierto en una valoración de <b>ácido fuerte con base fuerte</b>, porque la sal que queda es neutra.</p>
+<!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El error del punto de equivalencia</p><p class="lede">Mucha gente da por hecho que en el punto de equivalencia el pH es 7. Solo es cierto en una valoración de <b>ácido fuerte con base fuerte</b>, porque la sal que queda es neutra.</p>
 <div class="tw"><table><tr><th>Valoración</th><th>Sal resultante</th><th>pH en equivalencia</th></tr><tr><td>Fuerte + fuerte</td><td>Neutra (NaCl)</td><td>= 7</td></tr><tr><td>Débil + base fuerte</td><td>Básica (acetato)</td><td>&gt; 7</td></tr><tr><td>Base débil + ácido fuerte</td><td>Ácida (NH₄Cl)</td><td>&lt; 7</td></tr></table></div><p>La razón es la <b>hidrólisis</b>: el ion que proviene del componente débil reacciona con el agua y desplaza el pH. El acetato toma un protón del agua y libera OH⁻; el amonio cede uno y libera H⁺.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> De ahí que el indicador se elija según el tipo de valoración: fenolftaleína (viraje en 8-10) para ácido débil con base fuerte, y rojo de metilo (4-6) para base débil con ácido fuerte. Usar el indicador equivocado da un error sistemático en el volumen gastado.</div>
 </div><!--/amp1--><!--deep--><h3 id="t13-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
-<h4>1. Pares conjugados</h4>
+<h4><span class="hn">1</span>Pares conjugados</h4>
 <div class="eqd">\[\mathrm{HA}+\mathrm{H_2O}\rightleftharpoons \mathrm{A^-}+\mathrm{H_3O^+}\]</div>
 <p>HA y A⁻ forman un par conjugado: se diferencian en un protón. El agua actúa aquí de base, pero frente a un amoniaco actuaría de ácido: es <b>anfótera</b>.</p>
 <div class="eqd">\[K_a\cdot K_b=K_w=10^{-14}\qquad pK_a+pK_b=14\]</div>
 <div class="box key deepnote"><b>Idea clave.</b> esa relación es la que permite tratar la hidrólisis de una sal como un problema de ácido o base débil corriente: se calcula la \(K_b\) del anión a partir de la \(K_a\) del ácido del que procede y se aplica la fórmula de siempre.</div>
-<h4>2. Cálculo de pH, caso por caso</h4>
+<h4><span class="hn">2</span>Cálculo de pH, caso por caso</h4>
 <div class="tw"><table><tr><th>Disolución</th><th>Fórmula</th></tr><tr><td>Ácido fuerte C</td><td>pH = −log C</td></tr><tr><td>Base fuerte C</td><td>pOH = −log C; pH = 14 − pOH</td></tr><tr><td>Ácido débil</td><td>[H⁺] = √(K_a·C)</td></tr><tr><td>Base débil</td><td>[OH⁻] = √(K_b·C)</td></tr><tr><td>Sal de ácido débil</td><td>[OH⁻] = √(K_w·C/K_a)</td></tr><tr><td>Tampón</td><td>pH = pK_a + log(sal/ácido)</td></tr></table></div><div class="box trap deepnote"><b>Cuidado.</b> La aproximación \([H^+]=\sqrt{K_aC}\) supone que lo disociado es despreciable frente a \(C\). Deja de valer si \(C/K_a&lt;100\) o si el grado de disociación supera el 5 %: entonces hay que resolver la ecuación de segundo grado completa.</div>
-<h4>3. Disoluciones reguladoras</h4>
+<h4><span class="hn">3</span>Disoluciones reguladoras</h4>
 <p>Un tampón resiste los cambios de pH porque tiene a la vez una reserva de ácido (que neutraliza las bases añadidas) y de base conjugada (que neutraliza los ácidos).</p>
 <div class="eqd">\[pH=pK_a+\log\frac{[\mathrm{A^-}]}{[\mathrm{HA}]}\]</div>
 <ul><li>La capacidad reguladora es <b>máxima cuando \([A^-]=[HA]\)</b>, es decir, cuando \(pH=pK_a\).</li><li>El intervalo útil es \(pK_a\pm1\): fuera de ahí la proporción se desequilibra y el tampón deja de amortiguar.</li><li>Para preparar un tampón de pH dado se elige un ácido cuyo \(pK_a\) esté cerca y se ajusta la proporción con la fórmula.</li></ul>
 <div class="box key deepnote"><b>Idea clave.</b> la sangre es un tampón de bicarbonato con \(pK_a\) cercano a 6,1 que mantiene el pH en 7,4. Una desviación de 0,4 unidades es incompatible con la vida: de ahí la importancia del concepto.</div>
-<h4>4. Valoraciones</h4>
+<h4><span class="hn">4</span>Valoraciones</h4>
 <ol class="pasos"><li>Antes de añadir nada: pH del ácido (o base) de partida.</li><li>Antes del punto de equivalencia: queda ácido sin neutralizar y sal formada → es un <b>tampón</b>, se usa Henderson-Hasselbalch.</li><li>En el punto de equivalencia: solo hay sal → hidrólisis.</li><li>Después: sobra base fuerte → el pH lo fija el exceso.</li></ol>
 <p>El <b>punto de semiequivalencia</b> es útil para los problemas: ahí se ha neutralizado la mitad del ácido, así que \([A^-]=[HA]\) y por tanto \(pH=pK_a\). Leer ese punto en la curva es la forma experimental de medir \(K_a\).</p>
 </div><!--/deep--><h3 id="t13-ejercicios">Ejercicios tipo, paso a paso</h3><details class="paso"><summary><span class="pn">1</span>pH de ácido acético 0,1 M (K_a = 1,8×10⁻⁵).</summary><div class="inner"><p>\([H^+]=\sqrt{1{,}8\times10^{-5}\times0{,}1}=1{,}34\times10^{-3}\) M; \(pH=2{,}87\). Grado de disociación: \(1{,}34\times10^{-3}/0{,}1=1{,}34\,\%\), menor del 5 %: la aproximación es válida.</p></div></details><details class="paso"><summary><span class="pn">2</span>pH de acetato de sodio 0,1 M.</summary><div class="inner"><p>\(K_b=K_w/K_a=10^{-14}/1{,}8\times10^{-5}=5{,}56\times10^{-10}\). \([OH^-]=\sqrt{5{,}56\times10^{-10}\times0{,}1}=7{,}45\times10^{-6}\); \(pOH=5{,}13\) y <b>pH = 8,87</b>: básico, como corresponde a la sal de un ácido débil.</p></div></details><details class="paso"><summary><span class="pn">3</span>Tampón con 0,1 mol de acético y 0,1 mol de acetato en 1 L.</summary><div class="inner"><p>\(pH=pK_a+\log(0{,}1/0{,}1)=4{,}74+0=4{,}74\). Si se añaden 0,01 mol de HCl: el acetato pasa a 0,09 y el acético a 0,11, \(pH=4{,}74+\log(0{,}09/0{,}11)=4{,}65\). Solo 0,09 unidades de caída, frente a las más de 2 que bajaría el agua pura.</p></div></details><details class="paso"><summary><span class="pn">4</span>Valoración de 25 mL de HCl 0,1 M con NaOH 0,1 M: volumen y pH en equivalencia.</summary><div class="inner"><p>\(V=25\) mL (misma concentración y estequiometría 1:1). La sal es NaCl, neutra: <b>pH = 7</b>. Si el ácido fuera acético, el volumen sería el mismo pero el pH saldría en torno a 8,7.</p></div></details>
