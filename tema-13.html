@@ -121,7 +121,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">El error del punto de equivalencia</p><p class="lede">Mucha gente da por hecho que en el punto de equivalencia el pH es 7. Solo es cierto en una valoración de <b>ácido fuerte con base fuerte</b>, porque la sal que queda es neutra.</p>
 <div class="tw"><table><tr><th>Valoración</th><th>Sal resultante</th><th>pH en equivalencia</th></tr><tr><td>Fuerte + fuerte</td><td>Neutra (NaCl)</td><td>= 7</td></tr><tr><td>Débil + base fuerte</td><td>Básica (acetato)</td><td>&gt; 7</td></tr><tr><td>Base débil + ácido fuerte</td><td>Ácida (NH₄Cl)</td><td>&lt; 7</td></tr></table></div><p>La razón es la <b>hidrólisis</b>: el ion que proviene del componente débil reacciona con el agua y desplaza el pH. El acetato toma un protón del agua y libera OH⁻; el amonio cede uno y libera H⁺.</p>
 <div class="box trap deepnote"><b>Cuidado.</b> De ahí que el indicador se elija según el tipo de valoración: fenolftaleína (viraje en 8-10) para ácido débil con base fuerte, y rojo de metilo (4-6) para base débil con ácido fuerte. Usar el indicador equivocado da un error sistemático en el volumen gastado.</div>
-</div><!--/amp1--><!--manim:qg-t13--><figure class="fig manim-fig" id="anim-qg-t13"><p class="ft">Animación · Valoración ácido fuerte con base fuerte</p><div class="manim" data-anim="qg-t13"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro.</figcaption></figure><!--/manim-->
+</div><!--/amp1--><!--manim:qg-t13--><figure class="fig manim-fig" id="anim-qg-t13"><p class="ft">Animación · Valoración ácido fuerte con base fuerte</p><div class="manim" data-anim="qg-t13"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro. Con «⬇ Vídeo» la descargas en formato vertical.</figcaption></figure><!--/manim-->
 <!--deep--><h3 id="t13-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
 <h4><span class="hn">1</span>Pares conjugados</h4>
 <div class="eqd">\[\mathrm{HA}+\mathrm{H_2O}\rightleftharpoons \mathrm{A^-}+\mathrm{H_3O^+}\]</div>
@@ -130,7 +130,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <div class="box key deepnote"><b>Idea clave.</b> esa relación es la que permite tratar la hidrólisis de una sal como un problema de ácido o base débil corriente: se calcula la \(K_b\) del anión a partir de la \(K_a\) del ácido del que procede y se aplica la fórmula de siempre.</div>
 <h4><span class="hn">2</span>Cálculo de pH, caso por caso</h4>
 <div class="tw"><table><tr><th>Disolución</th><th>Fórmula</th></tr><tr><td>Ácido fuerte C</td><td>pH = −log C</td></tr><tr><td>Base fuerte C</td><td>pOH = −log C; pH = 14 − pOH</td></tr><tr><td>Ácido débil</td><td>[H⁺] = √(K_a·C)</td></tr><tr><td>Base débil</td><td>[OH⁻] = √(K_b·C)</td></tr><tr><td>Sal de ácido débil</td><td>[OH⁻] = √(K_w·C/K_a)</td></tr><tr><td>Tampón</td><td>pH = pK_a + log(sal/ácido)</td></tr></table></div><div class="box trap deepnote"><b>Cuidado.</b> La aproximación \([H^+]=\sqrt{K_aC}\) supone que lo disociado es despreciable frente a \(C\). Deja de valer si \(C/K_a&lt;100\) o si el grado de disociación supera el 5 %: entonces hay que resolver la ecuación de segundo grado completa.</div>
-<!--manim:qg-t13b--><figure class="fig manim-fig" id="anim-qg-t13b"><p class="ft">Animación · Disolución reguladora</p><div class="manim" data-anim="qg-t13b"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro.</figcaption></figure><!--/manim-->
+<!--manim:qg-t13b--><figure class="fig manim-fig" id="anim-qg-t13b"><p class="ft">Animación · Disolución reguladora</p><div class="manim" data-anim="qg-t13b"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad. Si aparece «Prueba tú», mueve ese control para fijar tú el parámetro. Con «⬇ Vídeo» la descargas en formato vertical.</figcaption></figure><!--/manim-->
 <h4><span class="hn">3</span>Disoluciones reguladoras</h4>
 <p>Un tampón resiste los cambios de pH porque tiene a la vez una reserva de ácido (que neutraliza las bases añadidas) y de base conjugada (que neutraliza los ácidos).</p>
 <div class="eqd">\[pH=pK_a+\log\frac{[\mathrm{A^-}]}{[\mathrm{HA}]}\]</div>
@@ -148,7 +148,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
-<script src="anim-manim.js?v=28356" defer></script>
-<script src="anim-temas.js?v=28356" defer></script>
+<script src="anim-manim.js?v=28916" defer></script>
+<script src="anim-temas.js?v=28916" defer></script>
 </body>
 </html>
