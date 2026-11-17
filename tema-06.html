@@ -120,7 +120,8 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <figure class="fig"><p class="ft">Figura interactiva · isotermas: gas ideal frente a van der Waals</p><div data-sim="gases"></div><figcaption>Mueve los controles y lee el recuadro: la figura calcula lo mismo que tú harías a mano en el examen.</figcaption></figure>
 <!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">La ecuación del gas ideal: qué significa cada letra</p><p class="lede">\(PV=nRT\) reúne las tres leyes clásicas: a \(T\) fija, \(P\) y \(V\) son inversos (Boyle); a \(P\) fija, \(V\) crece con \(T\) (Charles); y volúmenes iguales de gases a igual \(P,T\) tienen igual número de moléculas (Avogadro). La \(T\) debe ir <b>siempre en kelvin</b>.</p>
 <p>Elige la \(R\) que coincida con tus unidades: 0,082 atm·L/(mol·K) si usas atm y litros; 8,314 J/(mol·K) si usas SI. De la misma ecuación sale la densidad, \(\rho=PM/RT\), y la masa molar, \(M=mRT/PV\).</p><p class="ft">Mezclas, cinética molecular y gases reales</p><p class="run"><b>Dalton:</b> en una mezcla, cada gas se comporta como si estuviera solo: \(P_i=\chi_iP_{tot}\), con \(\chi_i=n_i/n_{tot}\). <b>Teoría cinética:</b> la temperatura mide la energía cinética media de las moléculas, \(\tfrac32kT\); la velocidad cuadrática media es \(\sqrt{3RT/M}\), así que a la misma \(T\) las moléculas ligeras van más deprisa.</p>
-<p>Los gases <b>reales</b> se desvían del ideal a alta presión y baja temperatura: la ecuación de van der Waals corrige con \(a\) (atracción entre moléculas) y \(b\) (volumen propio). Fuera de ahí, el modelo ideal basta.</p></div><!--/amp1--><!--deep--><h3 id="t6-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+<p>Los gases <b>reales</b> se desvían del ideal a alta presión y baja temperatura: la ecuación de van der Waals corrige con \(a\) (atracción entre moléculas) y \(b\) (volumen propio). Fuera de ahí, el modelo ideal basta.</p></div><!--/amp1--><!--manim:qg-t6--><figure class="fig manim-fig" id="anim-qg-t6"><p class="ft">Animación · Gas ideal: temperatura y presión</p><div class="manim" data-anim="qg-t6"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad.</figcaption></figure><!--/manim-->
+<!--deep--><h3 id="t6-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
 <h4><span class="hn">1</span>Los gases: de las leyes al modelo</h4>
 <div class="eqd">\[pV=nRT,\qquad R=0{,}082\ \mathrm{atm\,L/(mol\,K)}=8{,}314\ \mathrm{J/(mol\,K)}\]</div>
 <ul><li>La <b>temperatura</b> siempre en kelvin.</li><li>Las leyes de <b>Boyle</b> (\(pV\) cte), <b>Charles</b> (\(V/T\) cte) y <b>Gay-Lussac</b> (\(p/T\) cte) son casos particulares.</li><li><b>Dalton:</b> \(p_i=x_i\,p_{total}\). <b>Densidad</b> de un gas: \(\rho=\dfrac{pM}{RT}\).</li></ul>
@@ -157,5 +158,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
+<script src="anim-manim.js?v=19326" defer></script>
+<script src="anim-temas.js?v=19326" defer></script>
 </body>
 </html>

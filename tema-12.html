@@ -121,7 +121,8 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 <!--amp1--><div class="zero" style="margin-top:14px"><p class="ft">Explicación ampliada</p><p class="ft">Cómo se saca el orden de una tabla de datos</p><p class="lede">El método de las <b>velocidades iniciales</b> es el que cae en examen. Se dan varios experimentos en los que solo cambia una concentración, y se comparan de dos en dos:</p>
 <ol class="pasos"><li>Elige dos experimentos en los que solo varíe \([A]\).</li><li>Divide las velocidades: \(v_2/v_1=([A]_2/[A]_1)^m\).</li><li>Despeja \(m\) tomando logaritmos, o por inspección: si al doblar \([A]\) la velocidad se dobla, \(m=1\); si se cuadruplica, \(m=2\); si no cambia, \(m=0\).</li><li>Repite con \(B\) y sustituye en cualquier experimento para sacar \(k\).</li></ol>
 <p class="ft">Las unidades de k delatan el orden</p><div class="tw"><table><tr><th>Orden total</th><th>Unidades de k</th><th>Recta que sale</th><th>Semivida</th></tr><tr><td>0</td><td>mol·L⁻¹·s⁻¹</td><td>[A] vs t</td><td>[A]₀/2k</td></tr><tr><td>1</td><td>s⁻¹</td><td>ln[A] vs t</td><td>ln2/k (constante)</td></tr><tr><td>2</td><td>L·mol⁻¹·s⁻¹</td><td>1/[A] vs t</td><td>1/(k[A]₀)</td></tr></table></div><div class="box trap deepnote"><b>Cuidado.</b> Si en un problema te dan \(k\) con unidades s⁻¹, el orden total es 1 aunque no te lo digan. Comprobar las unidades es la forma más rápida de detectar un error de planteamiento.</div>
-</div><!--/amp1--><!--deep--><h3 id="t12-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
+</div><!--/amp1--><!--manim:qg-t12--><figure class="fig manim-fig" id="anim-qg-t12"><p class="ft">Animación · Cinética de primer orden y vida media</p><div class="manim" data-anim="qg-t12"><p class="muted">Activa JavaScript para ver la animación.</p></div><figcaption>Se reproduce sola al llegar a ella. Puedes pausarla, arrastrar la barra para ir a cualquier instante y cambiar la velocidad.</figcaption></figure><!--/manim-->
+<!--deep--><h3 id="t12-profundiza">Desarrollo teórico a fondo</h3><div class="deep">
 <h4><span class="hn">1</span>Teoría de colisiones y estado de transición</h4>
 <div class="box key deepnote"><b>Idea clave.</b> para que haya reacción no basta con que las moléculas choquen: deben hacerlo con <b>energía suficiente</b> (mayor que \(E_a\)) y con la <b>orientación adecuada</b>. De ahí los dos factores de Arrhenius: la exponencial cuenta las colisiones con energía y el factor \(A\) recoge frecuencia y orientación.</div>
 <p>El <b>complejo activado</b> es la configuración de máxima energía en el camino de reacción. No es un intermedio aislable: dura lo que una vibración molecular.</p>
@@ -150,5 +151,7 @@ mjx-container:not([display="true"]){padding:.2em .32em}
 </div>
 <script src="app.js"></script>
 <script src="sims.js"></script>
+<script src="anim-manim.js?v=19326" defer></script>
+<script src="anim-temas.js?v=19326" defer></script>
 </body>
 </html>
