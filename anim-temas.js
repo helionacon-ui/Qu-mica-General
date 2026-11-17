@@ -84,7 +84,7 @@ M.reg('qg-t9',M.traza({title:'Equilibrio químico: A ⇌ B',H:560,dur:16,ax:{xr:
  caps:[[6,'Empezamos con A puro. La reacción directa (k₁ = 0,3) gana a la inversa (k₂ = 0,1) y [B] crece.'],[12,'El cociente de reacción <i>Q = [B]/[A]</i> sube hasta igualar la constante <i>K = k₁/k₂ = 3</i>.'],[99,'En el equilibrio las concentraciones dejan de cambiar, pero la reacción no se para: va igual de rápido en los dos sentidos (equilibrio dinámico).']]}));
 
 /* T10 diagrama de fases del agua (esquema) */
-M.reg('qg-t10',M.base({title:'Diagrama de fases del agua (esquema)',H:560,dur:18,caps:[[6,'Calentamos hielo a 1 atm. Cada región del diagrama es una fase estable; las curvas son equilibrios entre dos fases.'],[12,'Al cruzar la curva sólido-líquido funde (0 °C) y al cruzar la líquido-vapor hierve (100 °C).'],[99,'En el <b>punto triple</b> coexisten las tres fases; por encima del <b>punto crítico</b> líquido y vapor dejan de distinguirse.']]},
+M.reg('qg-t10b',M.base({title:'Diagrama de fases del agua (esquema)',H:560,dur:18,caps:[[6,'Calentamos hielo a 1 atm. Cada región del diagrama es una fase estable; las curvas son equilibrios entre dos fases.'],[12,'Al cruzar la curva sólido-líquido funde (0 °C) y al cruzar la líquido-vapor hierve (100 °C).'],[99,'En el <b>punto triple</b> coexisten las tres fases; por encima del <b>punto crítico</b> líquido y vapor dejan de distinguirse.']]},
  function(D,t){var A=U.axes(D,{xr:[0,10],yr:[0,10],xt:[],yt:[],xl:'T',yl:'p'},{x:90,y:90,w:460,h:320});
   var tp=[2.4,2.2],cp=[8.6,8.2];D.path([[A.X(2.0),A.Y(10)],[A.X(tp[0]),A.Y(tp[1])]],C.f,2.6);
   var vap=[];for(var s=0;s<=1;s+=0.02)vap.push([A.X(lerp(tp[0],cp[0],s)),A.Y(tp[1]+(cp[1]-tp[1])*s*s)]);D.path(vap,C.f,2.6);var sub=[];for(var s2=0;s2<=1;s2+=0.02)sub.push([A.X(lerp(0.2,tp[0],s2)),A.Y(0.2+(tp[1]-0.2)*s2*s2)]);D.path(sub,C.f,2.6);
@@ -132,4 +132,11 @@ M.reg('qg-t15',M.base({title:'Mecanismo SN2: inversión de Walden',H:540,dur:14,
   D.line(nu,cy,cx,cy,C.m,2,u>0.3&&u<0.8?[5,4]:(u>=0.8?null:[2,6]),u>0.15?1:0.2);D.dot(nu,cy,20,C.m);D.text('Nu⁻',nu,cy+6,{s:15,a:'center',c:C.bg});
   D.line(cx,cy,lg,cy,C.g,2,u>0.4?[5,4]:null,u<0.8?1:0.15);D.dot(lg,cy,20,C.g);D.text(u>0.75?'Br⁻':'Br',lg,cy+6,{s:15,a:'center',c:C.bg});
   D.text(u<0.35?'ataque por detrás':(u<0.7?'estado de transición [Nu···C···Br]⁻':'inversión de la configuración'),W/2,450,{s:22,a:'center',c:C.m,bold:true});}));
+/* T10 ley de Raoult y ascenso ebulloscópico */
+function pv(T,x){return (1-x)*Math.exp(4890*(1/373.15-1/(T+273.15)));}function teb(x){return 1/(1/373.15+Math.log(1-x)/4890)-273.15;}
+M.reg('qg-t10',M.curva({title:'Disoluciones: ley de Raoult y punto de ebullición',H:560,dur:18,p:[0,0.12],ax:{xr:[90,106],yr:[0.6,1.25],xt:[90,95,100,105],yt:[0.8,1,1.2],xd:0,yd:1,xl:'T (°C)',yl:'p (atm)'},h:300,ghost:false,
+ curvas:[{f:function(T){return pv(T,0);},c:'f',w:2,fija:true},{f:function(T,x){return pv(T,x);},c:'m'}],
+ extra:function(D,A,x){D.line(A.X(90),A.Y(1),A.X(106),A.Y(1),C.bad,1.4,[5,4]);D.text('1 atm',A.X(105.8),A.Y(1)-6,{s:13,c:C.bad,a:'right'});var tb=teb(x);D.dot(A.X(100),A.Y(1),5,C.f);D.dot(A.X(tb),A.Y(1),6,C.m);D.text('agua pura',A.X(92),A.Y(pv(92,0))-10,{s:14,c:C.f});},
+ read:function(x){return ['fracción molar de soluto x_{s} = '+nf(x,3)+'    p = p°·(1 − x_{s})','T_{eb} = '+nf(teb(x),2)+' °C    ΔT_{eb} = '+nf(teb(x)-100,2)+' °C'];},
+ caps:[[6,'Ley de Raoult: un soluto no volátil rebaja la presión de vapor del disolvente en proporción a su fracción molar: <i>p = p°·x<sub>disolvente</sub></i>.'],[12,'Como la curva de presión de vapor baja, la disolución necesita más temperatura para llegar a 1 atm: hierve más tarde.'],[99,'Es el ascenso ebulloscópico, <i>ΔT<sub>eb</sub> = K<sub>eb</sub>·m</i>: una propiedad coligativa, que solo depende del número de partículas de soluto.']]}));
 })();
