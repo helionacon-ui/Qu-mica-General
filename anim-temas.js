@@ -31,16 +31,25 @@ M.reg('qg-t3',M.traza({title:'Formación del enlace: energía frente a distancia
  caps:[[6,'Dos átomos de hidrógeno se acercan. Al solaparse sus orbitales, la energía del sistema baja: se forma el enlace.'],[11,'El mínimo de la curva da la <b>longitud de enlace</b> (74 pm) y su profundidad, la <b>energía de enlace</b> (436 kJ/mol).'],[99,'Si se acercan más, la repulsión entre los núcleos dispara la energía. Por eso la distancia de enlace es un compromiso.']]}));
 
 /* T4 formulación inorgánica */
-M.reg('qg-t4',M.pasos({title:'Formular cruzando valencias',H:560,dur:20,lines:[
- {s:'sulfato de aluminio',it:false,b:true},{s:'catión: Al³⁺        anión: SO₄²⁻'},{s:'las cargas se cruzan como subíndices: Al₂ (SO₄)₃'},{s:'comprobación: 2·(+3) + 3·(−2) = 0  ✓',c:'ok'},
- {s:'óxido de hierro(III)',it:false,b:true},{s:'Fe³⁺  y  O²⁻   →   Fe₂O₃'},{s:'nombre sistemático: trióxido de dihierro'},{s:'2·(+3) + 3·(−2) = 0  ✓',c:'ok'}],
- caps:[[10,'Para formular una sal o un óxido se escriben los iones con su carga y se cruzan: la carga de uno es el subíndice del otro.'],[99,'Si los subíndices tienen divisor común se simplifican (salvo en peróxidos). El compuesto final siempre es neutro: la suma de cargas da 0.']]}));
+var VA=[['Al','3+','O','2−','Al₂O₃','óxido de aluminio'],['Ca','2+','Cl','1−','CaCl₂','cloruro de calcio'],['Al','3+','SO₄','2−','Al₂(SO₄)₃','sulfato de aluminio'],['Fe','3+','O','2−','Fe₂O₃','óxido de hierro(III)']];
+M.reg('qg-t4',M.base({title:'Formular cruzando valencias',H:560,dur:20,caps:[[5,'Se escribe primero el catión y después el anión, cada uno con su carga.'],[10,'El valor de cada carga pasa a ser el subíndice del otro ión: las cargas «se cruzan». Si los subíndices tienen divisor común, se simplifican.'],[99,'La comprobación: la suma de cargas tiene que dar cero. Los iones poliatómicos se escriben entre paréntesis si llevan subíndice.']]},
+ function(D,t){var k=Math.min(3,Math.floor(t/5)),v=VA[k],u=(t%5)/5,a=ease(seg(u,0.15,0.6)),cx=W/2,y=230;
+  D.text(v[0],cx-90,y,{s:48,a:'center',c:C.f,bold:true});D.text(v[1],cx-50,y-34,{s:22,c:C.f});D.text(v[2],cx+90,y,{s:48,a:'center',c:C.hl,bold:true});D.text(v[3],cx+130,y-34,{s:22,c:C.hl});
+  var n1=parseInt(v[1]),n2=parseInt(v[3]);if(a>0){var p1=[lerp(cx-40,cx+150,a),lerp(y-40,y+30,a)],p2=[lerp(cx+140,cx-30,a),lerp(y-40,y+30,a)];D.text(''+n1,p1[0],p1[1],{s:24,c:C.m,bold:true});D.text(''+n2,p2[0],p2[1],{s:24,c:C.m,bold:true});
+   D.ctx.save();D.ctx.setLineDash([5,4]);D.line(cx-40,y-40,cx+140,y+20,C.mut,1.4);D.line(cx+140,y-40,cx-30,y+20,C.mut,1.4);D.ctx.restore();}
+  var b=ease(seg(u,0.65,0.85));if(b>0){D.text(v[4],cx,y+120,{s:44,a:'center',c:C.m,bold:true,al:b});D.text(v[5],cx,y+160,{s:18,a:'center',c:C.w,al:b});}
+  var g=v[4]==='CaCl₂'?'1·(+2) + 2·(−1) = 0':'2·(+3) + 3·(−2) = 0';U.readout(D,[b>0.5?g+'  ✓':' '],470);}));
+
 
 /* T5 formulación del carbono */
-M.reg('qg-t5',M.pasos({title:'Nombrar un compuesto orgánico',H:560,dur:20,lines:[
- {s:'CH₃–CH(OH)–CH(CH₃)–CH₂–CH₃',it:false,b:true},{s:'1. cadena principal: la más larga que contiene el grupo –OH → 5 C (pent-)'},{s:'2. numerar para que el –OH tenga el localizador más bajo → C2'},
- {s:'3. sustituyentes: un metilo en C3'},{s:'4. sufijo del grupo principal: alcohol → -ol'},{s:'3-metilpentan-2-ol',it:false,b:true,c:'m'}],
- caps:[[12,'Se elige la cadena principal (la más larga que contenga el grupo funcional) y se numera para dar el localizador más bajo al grupo principal.'],[99,'El nombre se construye: localizador y sustituyentes en orden alfabético + raíz de la cadena + sufijo del grupo funcional.']]}));
+var CH=[[0,0],[1,-0.6],[2,0],[3,-0.6],[4,0]],SUBS=[[1,-0.6,1,-1.5,'OH'],[2,0,2,0.9,'CH₃']];
+M.reg('qg-t5',M.base({title:'Nombrar un compuesto orgánico',H:580,dur:20,caps:[[5,'Se dibuja el esqueleto: cada vértice es un carbono. Primero se busca la cadena más larga que contiene el grupo funcional (–OH): 5 carbonos, pent-.'],[11,'Se numera desde el extremo que da el localizador más bajo al grupo principal: así el –OH queda en C2 (desde el otro lado sería C4).'],[99,'El metilo queda en C3. Nombre: sustituyentes + raíz + sufijo → <b>3-metilpentan-2-ol</b>.']]},
+ function(D,t){var x0=170,y0=260,S=75,P=function(q){return [x0+q[0]*S,y0+q[1]*S];},a=ease(seg(t,4,6)),dir=t<9?(t<7?0:-1):1,b=ease(seg(t,13,15));
+  D.path(CH.map(P),a>0?C.m:C.ax,a>0?5:3);SUBS.forEach(function(s){var p=P([s[0],s[1]]),q=P([s[2],s[3]]);D.line(p[0],p[1],q[0],q[1],C.ax,3);D.text(s[4],q[0],q[1]+(s[3]<0?-6:22),{s:20,a:'center',c:s[4]==='OH'?C.bad:C.hl,bold:true});});
+  CH.forEach(function(c,i){var p=P(c);D.dot(p[0],p[1],5,C.ax);if(dir!==0){var n=dir>0?i+1:5-i;D.text(''+n,p[0]+(c[1]<0?-14:14),p[1]+(c[1]<0?-8:24),{s:16,a:'center',c:dir>0?C.y:C.mut,bold:dir>0});}});
+  if(t>=7&&t<9)D.text('desde la derecha: –OH en C4  ✗',W/2,420,{s:17,a:'center',c:C.bad});if(t>=9&&t<13)D.text('desde la izquierda: –OH en C2  ✓',W/2,420,{s:17,a:'center',c:C.ok});
+  if(b>0)D.text('3-metilpentan-2-ol',W/2,470,{s:30,a:'center',c:C.m,bold:true,al:b});}));
+
 
 /* T6 gas ideal */
 var gp=null;
